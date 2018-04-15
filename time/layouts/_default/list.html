@@ -1,0 +1,32 @@
+<html>
+    <body>
+        <style>
+            body {
+                background: #202020;
+                color: #f8f8f8;
+            }
+        </style>
+
+<section id="main">
+    <div>
+          {{ range .Data.Pages.GroupByDate "2006-01-02" }}
+  
+          {{ $mi := (time .Key) }}
+  
+          <h3>{{ dateFormat "Monday, Jan 2, 2006" $mi }}</h3>
+  
+              <ul id="list">
+                  {{ range .Pages }}
+                      <br>
+                      {{ .Title }}
+                      <br>
+                      {{ .Params.date }}
+                      {{ dateFormat "Monday January 2, 3:04 PM" .Params.date }}
+              </ul>
+              {{end }}
+  
+          {{ end }}
+    </div>
+  </section>
+    </body>
+</html>
